@@ -121,3 +121,9 @@ By:
     interval = -1
 ```
 
+**Upgrades:**
+
+To upgrade Telegraf binary to a new version, simply extract the new tgz release in the "bin" directory, and reload your Splunk Deployment server.
+
+Splunk will automatically restart the Telegraf process after Splunk startup.
+
