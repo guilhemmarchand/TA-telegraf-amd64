@@ -49,7 +49,7 @@ if [ ! -f "$STDOUT" ]; then
 fi
 
 if [ -z "$STDERR" ]; then
-    STDERR=/var/log/telegraf/telegraf.log
+    STDERR=$SPLUNK_HOME/etc/apps/$APP/bin/telegraf/var/log/telegraf/telegraf.log
 fi
 if [ ! -f "$STDERR" ]; then
     mkdir -p `dirname $STDERR`
@@ -104,7 +104,7 @@ name=telegraf
 daemon=$SPLUNK_HOME/etc/apps/$APP/bin/telegraf/usr/bin/telegraf
 
 # pid file for the daemon
-pidfile=/var/run/telegraf/telegraf.pid
+pidfile=$SPLUNK_HOME/var/run/telegraf/telegraf.pid
 piddir=`dirname $pidfile`
 
 if [ ! -d "$piddir" ]; then
