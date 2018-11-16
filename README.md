@@ -124,8 +124,8 @@ Change:
 By:
 
 ```
-    config=$SPLUNK_HOME/etc/apps/TA-telegraf-amd64/local/telegraf.conf
-    confdir=$SPLUNK_HOME/etc/apps/TA-telegraf-amd64/bin/telegraf/etc/telegraf/telegraf.d
+    config=$SPLUNK_HOME/etc/apps/$APP/local/telegraf.conf
+    confdir=$SPLUNK_HOME/etc/apps/$APP/bin/telegraf/etc/telegraf/telegraf.d
 ```
 
 Change:
