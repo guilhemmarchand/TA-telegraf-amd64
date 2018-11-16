@@ -1,8 +1,5 @@
 #.gitignore
 
-# local configuration files
-*/local/*
-
 # local metadata
 */metadata/local.meta
 
