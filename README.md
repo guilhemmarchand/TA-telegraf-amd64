@@ -137,7 +137,7 @@ Change:
 By:
 
 ```
-    pidfile=$SPLUNK_HOME/var/run/telegraf/telegraf.pid
+    pidfile=/tmp/telegraf.pid
 ```
 
 **Finally, create a very simple local/inputs.conf configuration file:**
