@@ -138,6 +138,9 @@ case $1 in
             log_failure_msg "set open file limit to $OPEN_FILE_LIMIT"
         fi
 
+        # Prevents any processes duplication
+        pkill telegraf
+
         log_success_msg "Starting the process" "$name"
 
         case $USER in
