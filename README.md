@@ -6,7 +6,7 @@
 Telegraf deployment as Splunk application deployed by Splunk (TA)
 -----------------------------------------------------------------
 
-For Linux OS only (this does not work on Windows), you can publish Telegraf through a Splunk application that you push to your clients using a Splunk deployment server.
+You can publish Telegraf through a Splunk application that you push to your clients using a Splunk deployment server.
 
 This means that you can create a custom Technology Addon (TA) that contains both the Telegraf binary and the telegraf.conf configuraton files.
 
@@ -60,85 +60,7 @@ This means that you can create a custom Technology Addon (TA) that contains both
     bin/telegraf/usr/lib/telegraf/scripts/init.sh
 ```
 
-- Copy this "init.sh" script to the root of the "bin" directory:
-
-```
-    cp -p bin/telegraf/usr/lib/telegraf/scripts/init.sh bin/
-```
-
-- Achieve some minor modifications related to patch customizations, basically:
-
-Change:
-
-```
-    USER=telegraf
-    GROUP=telegraf
-```
-
-By:
-
-```
-    USER=$(whoami)
-    GROUP=$(id -g -n)
-```
-
-*Notes: the configuration above will automatically use the owner of the Splunk processes*
-
-After this section, add: (adapt if TA name differs)
-
-```
-    APP=TA-telegraf-amd64
-```
-
-Change:
-
-```
-    STDERR=/var/log/telegraf/telegraf.log
-```
-
-By:
-
-```
-    STDERR=$SPLUNK_HOME/etc/apps/$APP/bin/telegraf/var/log/telegraf/telegraf.log
-```
-
-Change:
-
-```
-    daemon=/usr/bin/telegraf
-```
-
-By:
-
-```
-    daemon=$SPLUNK_HOME/etc/apps/$APP/bin/telegraf/usr/bin/telegraf
-```
-
-Change:
-
-```
-    config=/etc/telegraf/telegraf.conf
-    confdir=/etc/telegraf/telegraf.d
-```
-
-By:
-
-```
-    config=$SPLUNK_HOME/etc/apps/$APP/local/telegraf.conf
-    confdir=$SPLUNK_HOME/etc/apps/$APP/bin/telegraf/etc/telegraf/telegraf.d
-```
-
-Change:
-
-```
-    pidfile=/var/run/telegraf/telegraf.pid
-```
-
-By:
-
-```
-    pidfile=/tmp/telegraf.pid
-```
+*This addon used a copy of this script with minor modifications for our context*
 
 **Finally, create a very simple local/inputs.conf configuration file:**
 
